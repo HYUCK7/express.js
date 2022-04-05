@@ -4,10 +4,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const { port, MONGO_URI } = process.env;
+const APP = './app/routes'
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+//require(`${APP}/board.route`)({url:'/api/board',app})
+//require(`${APP}/todo.route`)({url:'/api/todo',app})
+//require(`${APP}/user.routes`)({url:'/api/user',app})
+//require(`${APP}/game.route`)({url:'/api/game',app})
+//require(`${APP}/admin.route`)({url:'/api/admin',app})
+require(`${APP}/basic.route`)({url:'/api/bmi',app})
+
 var corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200 
@@ -32,45 +40,6 @@ app.get('/api/now', cors(corsOptions),(req, res) => {
 app.listen(port, () => {
   console.log({"현재 시간 : ":new Date().toLocaleString()})
 })
-app.post("/api/board/write",(req, res)=>{
-  const {PassengerId, name,  teamId, subject} = req.body
-  console.log(`넘어온 JSON 값 : ${JSON.stringify(req.body)}`)
-  console.log(`PassengerId Value : ${PassengerId}`)
-  console.log(`name 값 : ${name}`)
-  console.log(`teamId 값 : ${teamId}`)
-  console.log(`subject 값 : ${subject}`)
-  res.json(req.body)
-})
-function computeBmi(name, weight, height){
-  let _height = Number(height)
-  let _weight = Number(weight)
-  
-  let bmi = _weight/Math.pow (_height, 2)
-  let output = Math.round(bmi * 100) * 100
-  var result = {name, height, weight}
-
-  if(18.5<output)
-    result.bmi = "underweight"
-  if(18.5>=output)
-    result.bmi = "Normal"
-  if(output>25)
-    result.bmi = "Obese"
-  if(output>30)
-    result.bmi = "overweight"
-    console.log(`계산끝난 값: ${JSON.stringify(result)}`)
-  return result
-}
-app.post("/api/bmi/write", (req, res)=>{
-  const {name, weight, height} = req.body
-  console.log(`넘어온 JSON 값 : ${JSON.stringify(req.body)}`)
-  console.log(`이름: ${name}`)
-  console.log(`키: ${height}`)
-  console.log(`몸무게: ${weight}`)
-  const json = computeBmi(name, weight, height)
-  console.log(`계산된 JSON 값 : ${JSON.stringify(json)}`)
-  res.json(json)
-})
-
 app.post("/api/team/write", (req,res)=>{
   const {TeamId1, TeamId2, house, TeamName,
     orgYyyy, stadiumName, address, tel} = req.body
