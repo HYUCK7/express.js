@@ -10,4 +10,12 @@ exports.getbmi = (req, res) =>{
     console.log(`계산된 JSON값 : ${JSON.stringify(json)}`)
     res.status(200).json(json)
 }
-
+/*exports.calculator = (req, res) => {
+    const {num1, num2, opcode} = req.body
+    console.log(`숫자1 :${num1}`)
+    console.log(`연산기호: ${opcode}`)
+    console.log(`숫자2 :${num2}`)
+    const json = calculator(num1, opcode, num2)
+    console.log(JSON.stringify(json))
+    res.json(json)
+}*/

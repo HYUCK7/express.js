@@ -18,3 +18,26 @@ exports.bmi = (payload) => {
       console.log(`계산끝난 값: ${JSON.stringify(result)}`)
     return result
 }
+/*exports.calc = (payload) => {
+  const {num1, opcode, num2} = payload
+  let _num1 = Number(num1)
+  let _num2 = Number(num2)
+  var result = {num1, opcode, num2}
+  switch (opcode){
+    case "+" :
+        result.calc = (_num1 + _num2)
+        break;
+    case "-" :
+        result.calc = (_num1 - _num2)
+        break;
+    case "*" :
+        result.calc = (_num1 * _num2)
+        break;
+    case "/" :
+        result.calc = (_num1 / _num2)
+        break;
+    case "%" :
+        result.calc = (_num1 % _num2)
+        break;
+}return result 
+}*/

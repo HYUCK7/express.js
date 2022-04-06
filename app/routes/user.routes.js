@@ -1,2 +1,2 @@
-const { write } = require('../controller/board.controller');
-module.exports = x => x.app.post(`${x.url}/write`, write) ;
+const { signup } = require('../controller/user.controller');
+module.exports = x => x.app.post(`${x.url}/signup`, signup) ;
