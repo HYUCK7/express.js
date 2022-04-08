@@ -8,7 +8,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-//require(`${APP}/board.route`)({url:'/api/board',app})
+require(`${APP}/board.route`)({url:'/api/board',app})
 //require(`${APP}/todo.route`)({url:'/api/todo',app})
 require(`${APP}/user.routes`)({url:'/api/user',app})
 //require(`${APP}/game.route`)({url:'/api/game',app})
