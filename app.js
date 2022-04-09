@@ -8,13 +8,19 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-require(`${APP}/board.route`)({url:'/api/board',app})
-//require(`${APP}/todo.route`)({url:'/api/todo',app})
+
+/**require(`${APP}/board.route`)({url:'/api/board',app})
+require(`${APP}/todo.route`)({url:'/api/todo',app})
 require(`${APP}/user.routes`)({url:'/api/user',app})
-//require(`${APP}/game.route`)({url:'/api/game',app})
-//require(`${APP}/admin.route`)({url:'/api/admin',app})
+require(`${APP}/game.route`)({url:'/api/game',app})
+require(`${APP}/admin.route`)({url:'/api/admin',app})
 require(`${APP}/basic.route`)({url:'/api/bmi', app})
-//require(`${APP}/basic.route`)({url:'/api/calc', app})
+require(`${APP}/basic.route`)({url:'/api/calc', app})*/
+
+const nodes = ['basic', 'board', 'user']
+for (const leaf of nodes){
+  require(`${APP}/${leap}.route`)({url:`/api/${leaf}`, app})
+}
 
 var corsOptions = {
   origin: 'http://localhost:3000',
@@ -38,11 +44,6 @@ app.get('/', (req, res) => {
 app.get('/api/now', cors(corsOptions),(req, res) => {
   res.json({"now":new Date().toLocaleString()})
 })
-//mongoose
-//  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-//  .then(() => console.log('Successfully connected to mongodb'))
-//  .catch(e => console.error(e));
-
 app.get('/', (req, res) => {
   res.json({"현재 시간 : ":new Date().toLocaleString()})
 })
