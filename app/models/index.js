@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { MONGO_URI} = process.env;
+const { MONGO_URI } = process.env;
 const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 

@@ -2,25 +2,25 @@ require('dotenv').config();
 var cors = require('cors')
 const express = require('express');
 const app = express();
-const { port, MONGO_URI } = process.env;
+const { port , MONGO_URI } = process.env;
 const APP = './app/routes'
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-/**require(`${APP}/board.route`)({url:'/api/board',app})
-require(`${APP}/todo.route`)({url:'/api/todo',app})
+require(`${APP}/board.route`)({url:'/api/board',app})
+//require(`${APP}/todo.route`)({url:'/api/todo',app})
 require(`${APP}/user.routes`)({url:'/api/user',app})
-require(`${APP}/game.route`)({url:'/api/game',app})
-require(`${APP}/admin.route`)({url:'/api/admin',app})
-require(`${APP}/basic.route`)({url:'/api/bmi', app})
-require(`${APP}/basic.route`)({url:'/api/calc', app})*/
+//require(`${APP}/game.route`)({url:'/api/game',app})
+//require(`${APP}/admin.route`)({url:'/api/admin',app})
+//require(`${APP}/basic.route`)({url:'/api/bmi', app})
+//require(`${APP}/basic.route`)({url:'/api/calc', app})
 
-const nodes = ['basic', 'board', 'user']
+/**const nodes = ['basic', 'board', 'user']
 for (const leaf of nodes){
-  require(`${APP}/${leap}.route`)({url:`/api/${leaf}`, app})
-}
+  require(`${APP}/${leaf}.routes`)({url:`/api/${leaf}`, app})
+}*/
 
 var corsOptions = {
   origin: 'http://localhost:3000',
@@ -65,4 +65,5 @@ app.post("/api/team/write", (req,res)=>{
     console.log(`주소 : ${address}`)
     console.log(`전화번호: ${tel}`)
     res.json(req.body)
+    //1
 })
