@@ -1,7 +1,8 @@
 const db = require('../models/index')
 const todoSchema = db.todo
 exports.todo = (req, res) => {
-  new todoSchema(req.body).save(()=>{
+    console.log('### 진행 4: Node Server에 진입함.' + JSON.stringify(req.body))
+    new todoSchema(req.body).save(()=>{
     res.status(200).json({'result':'OK'})
   })
 }

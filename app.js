@@ -53,17 +53,3 @@ app.get('/api/now', cors(corsOptions),(req, res) => {
 app.listen(port, () => {
   console.log({"현재 시간 : ":new Date().toLocaleString()})
 })
-app.post("/api/team/write", (req,res)=>{
-  const {TeamId1, TeamId2, house, TeamName,
-    orgYyyy, stadiumName, address, tel} = req.body
-    console.log(`팀 아이디1: ${TeamId1}`)
-    console.log(`팀 아이디2: ${TeamId2}`)
-    console.log(`연고지: ${house}`)
-    console.log(`팀 이름: ${TeamName}`)
-    console.log(`창립연도: ${orgYyyy}`)
-    console.log(`경기장 이름: ${stadiumName}`)
-    console.log(`주소 : ${address}`)
-    console.log(`전화번호: ${tel}`)
-    res.json(req.body)
-    //1
-})

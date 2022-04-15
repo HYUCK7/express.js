@@ -2,8 +2,7 @@ module.exports = mongoose => {
     return mongoose.model(
         'todo',
         mongoose.Schema(
-            {
-                userid: String,
+            {   userid: String,
                 task : String,
                 completed : String
                 
