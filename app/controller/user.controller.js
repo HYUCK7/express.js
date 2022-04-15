@@ -1,6 +1,7 @@
 const db = require('../models/index')
 const userSchema = db.user
 exports.signup = (req,res) => {
+    console.log('### 진행 4: Node Server에 진입함.' + JSON.stringify(req.body))
         new userSchema(req.body).save(()=>{
             res.status(200).json({'result':'OK'})
     })
