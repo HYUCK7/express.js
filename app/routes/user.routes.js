@@ -1,4 +1,8 @@
-const { signup, userlist, profile } = require('../controller/user.controller')
-module.exports = x => {x.app.post(`${x.url}/signup`, signup)
+const { signup, userlist, profile, login } = require('../controller/user.controller')
+const {verifyToken} = require('../routes/middleware')
+
+module.exports = x => {
+x.app.post(`${x.url}/signup`, signup)
+x.app.post(`${x.url}/login`,verifyToken, login)
 x.app.get(`${x.url}/userlist`, userlist)
 x.app.get(`${x.url}/profile/:id`, profile)}

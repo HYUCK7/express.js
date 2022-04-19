@@ -1,26 +1,29 @@
 require('dotenv').config();
 var cors = require('cors')
 const express = require('express');
+const jwt = require('jsonwebtoken')
+const tokenRouter = require('./app/routes/token');
 const app = express();
 const { port , MONGO_URI } = process.env;
 const APP = './app/routes'
 app.use(express.static('public'));
+app.use('/token', tokenRouter);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-require(`${APP}/board.route`)({url:'/api/board',app})
-require(`${APP}/todo.route`)({url:'/api/todo',app})
-require(`${APP}/user.routes`)({url:'/api/user',app})
+//require(`${APP}/article.route`)({url:'/api/article',app})
+//require(`${APP}/todo.route`)({url:'/api/todo',app})
+//require(`${APP}/user.routes`)({url:'/api/user',app})
 //require(`${APP}/game.route`)({url:'/api/game',app})
 //require(`${APP}/admin.route`)({url:'/api/admin',app})
 //require(`${APP}/basic.route`)({url:'/api/bmi', app})
 //require(`${APP}/basic.route`)({url:'/api/calc', app})
 
-/**const nodes = ['basic', 'board', 'user']
+const nodes = ['basic', 'board', 'user']
 for (const leaf of nodes){
   require(`${APP}/${leaf}.routes`)({url:`/api/${leaf}`, app})
-}*/
+}
 
 var corsOptions = {
   origin: 'http://localhost:3000',

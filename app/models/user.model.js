@@ -3,8 +3,8 @@ module.exports = mongoose => {
         'user',
         mongoose.Schema(
             {userid: String,
-                name: String,
                 password: String,
+                name: String,
                 email: String,
                 phone: String,
                 birth: String,
