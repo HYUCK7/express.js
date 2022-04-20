@@ -1,16 +1,14 @@
-module.exports = mongoose => {
-    return mongoose.model(
-        'user',
-        mongoose.Schema(
-            {userid: String,
-                password: String,
-                name: String,
-                email: String,
-                phone: String,
-                birth: String,
-                address: String
-            }, { timestamps : true}
-        )
+export default function UserModel(mongoose) {
+    mongoose.model('user', mongoose.Schema({
+        userid: String,
+        password: String,
+        name: String,
+        email: String,
+        phone: String,
+        birth: String,
+        address: String
+    }, {timestamps: true}
+    )
     )
 }
 

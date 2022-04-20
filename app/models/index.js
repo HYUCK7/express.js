@@ -1,13 +1,16 @@
-require('dotenv').config()
-const { MONGO_URI } = process.env;
-const mongoose = require('mongoose')
+import dotenv from 'dotenv'
+import mongoose from 'mongoose'
+//import UserModel from '/user.model.js'
+//import ArticleModel from '/article.model.js'
+//import TodoModel from '/todo.model.js'
 mongoose.Promise = global.Promise
 
 const db = {}
 db.mongoose = mongoose
-db.url = MONGO_URI
-db.user = require('./user.model')(mongoose)
-db.article = require('./article.model')(mongoose)
-db.todo = require('./todo.model')(mongoose)
+db.url = dotenv.MONGO_URI
+//db.user = require('./user.model')(mongoose)
+//db.user = UserModel(mongoose)
+//db.article = ArticleModel(mongoose)
+//db.todo = TodoModel(mongoose)
 
-module.exports = db
+export default db
