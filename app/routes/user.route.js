@@ -1,5 +1,5 @@
 const { signup, userlist, profile, login } = require('../controller/user.controller')
-const {verifyToken} = require('../routes/middleware')
+const {verifyToken} = require('./middleware')
 
 module.exports = x => {
 x.app.post(`${x.url}/signup`, signup)

@@ -12,17 +12,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-//require(`${APP}/article.route`)({url:'/api/article',app})
-//require(`${APP}/todo.route`)({url:'/api/todo',app})
-//require(`${APP}/user.routes`)({url:'/api/user',app})
-//require(`${APP}/game.route`)({url:'/api/game',app})
-//require(`${APP}/admin.route`)({url:'/api/admin',app})
-//require(`${APP}/basic.route`)({url:'/api/bmi', app})
-//require(`${APP}/basic.route`)({url:'/api/calc', app})
-
-const nodes = ['basic', 'board', 'user']
+const nodes = ['basic', 'article', 'user']
 for (const leaf of nodes){
-  require(`${APP}/${leaf}.routes`)({url:`/api/${leaf}`, app})
+  require(`${APP}/${leaf}.route`)({url:`/api/${leaf}`, app})
 }
 
 var corsOptions = {
