@@ -9,18 +9,22 @@ const corsOptions = {
 }
 const app  = express()
 app.use(cors())
+app.use(function(_req, res, next) {
+    res.header(
+      "Access-Control-Allow-Headers",
+      "x-access-token, Origin, Content-Type, Accept"
+    );
+    next();
+  });
 
 app.post('/signup', cors(corsOptions), (req, res)=>{
-    const service = new UserSerivce()
-    res.status(200).json(service.join(req, res))
+    new UserSerivce().join(req,res)
 })
 app.post('/login', cors(corsOptions), (req, res)=>{
-    const service = new UserSerivce()
-    res.status(200).json(service.login(req, res))
+    new UserSerivce().login(req,res)
 })
 app.get('/userlist', cors(corsOptions), (_req, res)=>{
-    const service = new UserSerivce()
-    res.status(200).json(service.getUsers(_req, res))
+   new UserSerivce().getUsers(_req, res)
 }),
 app.get('/profile/:id', cors(corsOptions), (_req, res)=>{
     const service = new UserSerivce()

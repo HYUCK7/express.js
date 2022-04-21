@@ -17,6 +17,7 @@ import articleRouter from './app/routes/article.js'
 import todoRouter from './app/routes/todo.js'
 import userRouter from './app/routes/user.js'
 import responseService from './app/service/responseService.js'
+import ResponseService from './app/service/responseService.js'
 
 async function startServer() {
     dotenv.config()
@@ -33,6 +34,7 @@ async function startServer() {
     app.use("/article", articleRouter);
     app.use("/todo", todoRouter);
     app.use("/user", userRouter);
+    const responseService = new ResponseService()
     db
         .mongoose
         .connect(MONGO_URI, {

@@ -11,11 +11,10 @@ const app  = express()
 app.use(cors())
 
 app.post('/todo', cors(corsOptions), (req,res) => {
-    const service = new TodoService()
-    res.status(200).json(service.todo(req, res))
+    new TodoService().addTodo(req, res)
 })
 app.get('/todolist', cors(corsOptions), (_req, res) => {
-    res.status(200).json(service.todolist(_req, res))
+   new TodoService().getTodo(_req, res)
 })
 
 export default app
